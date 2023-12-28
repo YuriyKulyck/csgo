@@ -1,7 +1,7 @@
 import pygame
 
-class Hero:
-    def __init__(self, x, y, w, h, texture, speed):
+class Bullet:
+    def __init__(self, x, y, w, h, speed, texture):
         self.speed = speed
         self.texture = pygame.image.load(texture)
         self.texture = pygame.transform.scale(self.texture, (w, h))
@@ -9,18 +9,12 @@ class Hero:
         self.hit_box.x = x
         self.hit_box.y = y
         self.texture = pygame.transform.scale(self.texture, (w, h))
+        self.sound_shoot = pygame.mixer.Sound("explosion_01-6225.mp3")
+        self.sound_shoot.play(-1)
+        self.sound_shoot.set_volume(0)
 
     def render(self, window):
         window.blit(self.texture, (self.hit_box.x, self.hit_box.y))
 
     def movement(self):
-        keys = pygame.key.get_pressed()
-        is_step = False
-        if keys[pygame.K_d]:
-            if self.hit_box.x < 550:
-                self.hit_box.x += self.speed
-                is_step = True
-        if keys[pygame.K_a]:
-            if self.hit_box.x > 0:
-                self.hit_box.x -= self.speed
-                is_step = True
+        

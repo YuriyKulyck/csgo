@@ -1,7 +1,8 @@
 import pygame
+import random
 
-class Hero:
-    def __init__(self, x, y, w, h, texture, speed):
+class Enemy:
+    def __init__(self, x, y, w, h, speed, texture):
         self.speed = speed
         self.texture = pygame.image.load(texture)
         self.texture = pygame.transform.scale(self.texture, (w, h))
@@ -14,13 +15,4 @@ class Hero:
         window.blit(self.texture, (self.hit_box.x, self.hit_box.y))
 
     def movement(self):
-        keys = pygame.key.get_pressed()
-        is_step = False
-        if keys[pygame.K_d]:
-            if self.hit_box.x < 550:
-                self.hit_box.x += self.speed
-                is_step = True
-        if keys[pygame.K_a]:
-            if self.hit_box.x > 0:
-                self.hit_box.x -= self.speed
-                is_step = True
+        self.hit_box.y += self.speed

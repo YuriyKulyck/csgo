@@ -1,17 +1,26 @@
 import pygame
 import random
 import time
+import hero
+import enemy
 
 import hero
 
 pygame.init()
+
+pygame.mixer.init()
+pygame.mixer.music.load("space.ogg")
+pygame.mixer.music.play(-1)
 
 window = pygame.display.set_mode((600, 700))
 fps = pygame.time.Clock()
 
 layout = pygame.image.load("galaxy.jpg")
 layout = pygame.transform.scale(layout, (600, 700))
-xyiloN1 = hero.Hero(275, 600, 75, 75, "rocket.png", 1.5)
+N1LIGHT = hero.Hero(275, 600, 50, 75, "rocket.png", 6)
+enemyrange = []
+for i in range(25):
+    enemyrange.append(enemy.Enemy(random.randint(50, 550), random.randint(-1000, 0), 50, 50, 2, "asteroid.png"))
 
 game = True
 while game:
@@ -23,7 +32,10 @@ while game:
             game = False
             pygame.quit()
 
+    N1LIGHT.movement()
     window.blit(layout, (0, 0))
-    xyiloN1.render(window)
+    N1LIGHT.render(window)
+    for enemy in enemyrange:
+        enemy.render(window)
     pygame.display.flip()
     fps.tick(60)
