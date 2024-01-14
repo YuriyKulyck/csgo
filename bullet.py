@@ -17,4 +17,5 @@ class Bullet:
         window.blit(self.texture, (self.hit_box.x, self.hit_box.y))
 
     def movement(self):
+        self.hit_box.y -= self.speed
         
