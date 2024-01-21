@@ -3,7 +3,7 @@ import bullet
 
 
 class Hero:
-    def __init__(self, x, y, w, h, texture, speed, magazine):
+    def __init__(self, x, y, w, h, texture, speed):
         self.speed = speed
         self.texture = pygame.image.load(texture)
         self.texture = pygame.transform.scale(self.texture, (w, h))
