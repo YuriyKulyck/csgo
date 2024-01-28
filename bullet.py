@@ -9,9 +9,6 @@ class Bullet:
         self.hit_box.x = x
         self.hit_box.y = y
         self.texture = pygame.transform.scale(self.texture, (w, h))
-        self.sound_shoot = pygame.mixer.Sound("explosion_01-6225.mp3")
-        self.sound_shoot.play(-1)
-        self.sound_shoot.set_volume(0)
 
     def render(self, window):
         window.blit(self.texture, (self.hit_box.x, self.hit_box.y))
