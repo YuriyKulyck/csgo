@@ -37,7 +37,7 @@ def startgame():
     fixtime1 = time.time()
     fixtime2 = time.time()
     enemyrange = []
-    for i in range(100):
+    for i in range(10000):
         enemyrange.append(enemy.Enemy(random.randint(50, 550), random.randint(-1000, 0), 50, 50, 1, "asteroid.png"))
 
     game = True
